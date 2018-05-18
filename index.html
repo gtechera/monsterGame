@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Monster Game</title>
+</head>
+
+<body>
+
+  <div class="container" id="app">
+    <section>
+      <!-- Títulos -->
+      <div class="row center">
+        <div class="col s6 md6 lg6">
+          <h1>YOU</h1>
+        </div>
+        <div class="col s6 md6 lg6">
+          <h1>MONSTER</h1>
+        </div>
+      </div>
+    </section>
+    <section>
+      <!-- Puntos -->
+      <div class="row center">
+        <div class="col s6 md6 lg6">
+          <div class="black-text porcentajes">{{yourPoints}}</div>
+          <progress v-bind:value="yourPoints" max="100">
+          </progress>
+        </div>
+        <div class="col s6 md6 lg6">
+          <div class="black-text porcentajes">{{monsterPoints}}</div>
+          <progress v-bind:value="monsterPoints" max="100"></progress>
+        </div>
+      </div>
+    </section>
+    <!-- Botones de control del juego -->
+    <section>
+      <div class="row center">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-content">
+              <button type="submit" class="btn btn-large btnGeneral" v-if="!gameStarted" @click="gameStarted = !gameStarted">Start New Game</button>
+              <template v-else>
+                <button class="btn btn-large waves-effect waves-light red btnMargen black-text" @click="attack">ATTACK</button>
+                <button class="btn btn-large waves-effect waves-light orange btnMargen black-text" @click="specialAttack">SPECIAL ATTACK</button>
+                <button class="btn btn-large waves-effect waves-light green btnMargen black-text" @click="heal">HEAL</button>
+                <button class="btn btn-large waves-effect waves-light btnMargen white black-text" @click="giveUp">GIVE UP</button>
+              </template>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Historial de ataques -->
+    <section>
+      <div class="row center" v-if="historial.length > 0">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-content">
+              <template v-for="msg in historial">
+                <div class="monsterHits hits red-text">{{msg.monsterMsg}}</div>
+                <div class="playerHits hits blue-text">{{msg.yourMsg}}</div>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

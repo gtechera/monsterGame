@@ -1,0 +1,33 @@
+.btnGeneral {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.btnMargen {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.hits {
+  margin: 5px;
+  font-size: 1.5em;
+}
+
+.monsterHits {
+  background-color: rgb(255, 205, 196);
+}
+
+.playerHits {
+  background-color: rgb(247, 199, 247);
+}
+
+progress {
+  background-color: #f3f3f3;
+  border: 0;
+  height: 25px;
+  border-radius: 9px;
+}
+
+.porcentajes {
+  font-size: 1.5em;
+}
